@@ -16,6 +16,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white; /* Cambia el color de texto si es necesario */
+  color: #E0E0E0 ; /* Cambia el color de texto si es necesario */
   text-align: center;
+}
+
+.contenedor-navbar{
+  background-color: #1E1E1E ;
+  color: #E0E0E0 ;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.nav-buttons{
+  display: flex;
+  gap: 1rem;
+}
+
+.total-button{
+  margin-left: auto;
 }
