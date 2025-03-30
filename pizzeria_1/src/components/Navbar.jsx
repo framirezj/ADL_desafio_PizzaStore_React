@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import "../../src/index.css";
+import formatPrice from "../utils/formatPrice";
 
 const Navbar = () => {
   const total = 25000;
@@ -14,7 +15,7 @@ const Navbar = () => {
         <Button variant="outline-light">{token ? `🔒 Logout` : `🔐 Register`}</Button>
       </div>
       <Button variant="outline-info" className="total-button">
-        🛒 Total: $
+        🛒 Total: ${formatPrice(total)}
       </Button>
     </div>
   );
