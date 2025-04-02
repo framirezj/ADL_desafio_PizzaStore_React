@@ -37,3 +37,10 @@
 .total-button{
   margin-left: auto;
 }
+
+.container-pizzas{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
