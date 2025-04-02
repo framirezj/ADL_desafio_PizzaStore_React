@@ -5,7 +5,9 @@ import "../../src/index.css";
 const Home = () => {
   return (
     <div className="container-home">
-      <Header />
+      <div className="container-header">
+        <Header />
+      </div>
       <div className="container-pizzas">
         <CardPizza
           name="Napolitana"

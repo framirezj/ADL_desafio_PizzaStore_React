@@ -1,5 +1,4 @@
 import Button from "react-bootstrap/Button";
-import "../../src/index.css";
 import formatPrice from "../utils/formatPrice";
 
 const Navbar = () => {
@@ -7,17 +6,21 @@ const Navbar = () => {
   const token = false;
 
   return (
-    <div className="contenedor-navbar">
+    <>
       <h2>Pizzería Mamma Mia!</h2>
       <div className="nav-buttons">
         <Button variant="outline-light">🍕 Home</Button>
-        <Button variant="outline-light">{token ? `🔓 Profile` : `🔐 Login`}</Button>
-        <Button variant="outline-light">{token ? `🔒 Logout` : `🔐 Register`}</Button>
+        <Button variant="outline-light">
+          {token ? `🔓 Profile` : `🔐 Login`}
+        </Button>
+        <Button variant="outline-light">
+          {token ? `🔒 Logout` : `🔐 Register`}
+        </Button>
       </div>
       <Button variant="outline-info" className="total-button">
         🛒 Total: ${formatPrice(total)}
       </Button>
-    </div>
+    </>
   );
 };
 
