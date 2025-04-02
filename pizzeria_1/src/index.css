@@ -38,6 +38,7 @@
   color: #e0e0e0;
   text-align: center;
   gap: 2rem;
+  padding-bottom: 2rem;
 }
 
 .container-header {
@@ -60,4 +61,17 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+}
+
+
+/* footer */
+.container-footer{
+}
+
+.footer-text{
+  color: whitesmoke;
+  background-color: #1e1e1e;
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
 }
