@@ -13,7 +13,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         <Card.Title className="text-start">Pizza {name}</Card.Title>
         <Card.Text className="fw-light border-top">Ingredientes:</Card.Text>
         <Card.Text className="border-bottom">🍕 {formatIngredients(ingredients)}</Card.Text>
-        <Card.Text className="fw-bold">Precio: ${formatPrice(price)}</Card.Text>
+        <Card.Text className="fw-bold fs-5">Precio: ${formatPrice(price)}</Card.Text>
         <div className="d-flex justify-content-around gap-2">
           <Button variant="outline-dark">Ver Más 👀</Button>
           <Button variant="dark">Añadir 🛒</Button>

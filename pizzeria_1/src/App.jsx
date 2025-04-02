@@ -10,7 +10,7 @@ function App() {
       <div className="container-navbar">
         <Navbar />
       </div>
-      <main>
+      <main className="container-home">
         <Home />
       </main>
       <footer className="container-footer">

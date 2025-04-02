@@ -4,7 +4,7 @@ import "../../src/index.css";
 
 const Home = () => {
   return (
-    <div className="container-home">
+    <>
       <div className="container-header">
         <Header />
       </div>
@@ -28,7 +28,7 @@ const Home = () => {
           img="/img/pizzapizza.webp"
         />
       </div>
-    </div>
+    </>
   );
 };
 
