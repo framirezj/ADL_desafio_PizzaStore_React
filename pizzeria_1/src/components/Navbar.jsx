@@ -17,9 +17,9 @@ const Navbar = () => {
           {token ? `🔒 Logout` : `🔐 Register`}
         </Button>
       </div>
-      <Button variant="outline-info" className="total-button">
-        🛒 Total: ${formatPrice(total)}
-      </Button>
+      <div className="total-button">
+        <Button variant="outline-info">🛒 Total: ${formatPrice(total)}</Button>
+      </div>
     </>
   );
 };
