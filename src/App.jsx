@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Footer from "./components/Footer";
 
 function App() {
+  console.log("hola")
   return (
     <div className="app-container">
       <div className="container-navbar">
