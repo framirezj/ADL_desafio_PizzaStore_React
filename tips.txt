@@ -1,0 +1,18 @@
+instalar gh-pages por npm
+
+hacer el build
+npm run build (propio de vite)
+
+//packaje.json
+homepage : ruta proyoecto
+
+agregar al script
+deploy : gh-pages -d dist
+
+agregar a vite config
+
+base ./
+
+ejecutar
+npm run deploy
+
