@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import Register from "./components/Register";
 
 function App() {
   console.log("hola")
@@ -12,7 +13,8 @@ function App() {
         <Navbar />
       </div>
       <main className="container-home">
-        <Home />
+        {/* <Home /> */}
+        <Register />
       </main>
       <footer className="container-footer">
         <Footer />
