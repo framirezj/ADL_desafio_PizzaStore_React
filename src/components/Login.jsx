@@ -6,6 +6,21 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if(!email.trim() || !password.trim()){
+      alert('todos los campos son obligatorios')
+      return
+    }
+
+    if(password.length < 6){
+      alert('password debe ser al menos de 6 caracteres')
+      return
+    }
+
+    if(email === 'correo@gmail.com' && password === '123456'){
+      alert('Welcome!!!')
+    }
+
   }
 
   return (
