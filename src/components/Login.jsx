@@ -1,10 +1,30 @@
 import { useState } from "react";
 
+//usa solo un useState y relaciono los datos en un objeto
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [datosLogin, setDatosLogin] = useState({
+    email: "",
+    password: ""
+  });
+
+  //hago un destructurin para ocupar solo el nombre de la propiedad y no datoLogin.email...
+  const { email, password } = datosLogin
+
+  const handleChangeObject = (e) => {
+
+    //accede a las propiedades del elemento desde el evento
+    const {name , value} = e.target
+
+    //actualizar el estado del objeto
+    setDatosLogin(prevState =>  ({
+       ...prevState, [name]: value
+    }))
+  
+  }
+
 
   const handleSubmit = (e) => {
+
     e.preventDefault()
 
     if(!email.trim() || !password.trim()){
@@ -19,6 +39,8 @@ const Login = () => {
 
     if(email === 'correo@gmail.com' && password === '123456'){
       alert('Welcome!!!')
+    }else{
+      alert('Email y/o Password Incorrectos!')
     }
 
   }
@@ -31,9 +53,9 @@ const Login = () => {
           <input
             type="email"
             id="email"
-            name="email"
+            name="email" //importante porque relaciona los datos con el objeto
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChangeObject}
           />
         </div>
 
@@ -42,9 +64,9 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            name="password"
+            name="password" //importante porque relaciona los datos con el objeto
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChangeObject}
           />
         </div>
 
