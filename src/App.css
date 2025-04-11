@@ -1,33 +1,14 @@
-.container-access{
-    display: flex;
-    justify-content: center;
-    align-items: ce;
-    width: 70%;
-    height: 70%;
-    border: 1px solid wheat;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
-}
-
-.access-image{
-    background-image: url('.');
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-    url("/img/pizzapizza.webp");
-    background-size: cover;
-    width: 100%;
-    background-repeat: no-repeat;
-}
-
 .form-login{
     color: black;
     display: flex;
     flex-direction: column;
     padding: 4rem;
     gap: 2rem;
-    width: 100%;
+    width: 30%;
     font-size: 1.5rem;
     text-align: start;
     background-color: whitesmoke;
+    overflow: hidden;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
