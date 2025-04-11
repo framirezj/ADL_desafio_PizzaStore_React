@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
   const [datosRegister, setDatosRegister] = useState({
@@ -47,10 +48,11 @@ const Register = () => {
 
   return (
     <>
-      <form style={{ color: "black" }} onSubmit={handleSubmit}>
+      <form className="form-login" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label className="form-label" htmlFor="email">Email:</label>
           <input
+          className="form-control"
             type="email"
             id="email"
             name="email"
@@ -59,8 +61,9 @@ const Register = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Contraseña:</label>
+          <label className="form-label" htmlFor="password">Contraseña:</label>
           <input
+          className="form-control"
             type="password"
             id="password"
             name="password"
@@ -70,8 +73,9 @@ const Register = () => {
         </div>
 
         <div>
-          <label htmlFor="confirmPassword">Confirmar Contraseña:</label>
+          <label className="form-label" htmlFor="confirmPassword">Confirmar Contraseña:</label>
           <input
+          className="form-control"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
@@ -80,7 +84,7 @@ const Register = () => {
           />
         </div>
 
-        <button type="submit">Registrarse</button>
+        <button className="btn btn-primary mb-3" type="submit">Registrarse</button>
       </form>
     </>
   );

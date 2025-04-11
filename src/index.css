@@ -34,6 +34,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   color: #e0e0e0;
   text-align: center;
   gap: 2rem;
@@ -47,7 +48,7 @@
   background-size: cover;
   background-position: center;
 
-  /* width: 100%; */
+  width: 100%;
   height: 16rem;
 
   display: flex;
@@ -77,6 +78,7 @@
 @media (min-width: 768px) {
   .app-container {
     grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
   }
 
   /* Navbar */
@@ -99,3 +101,4 @@
     flex-wrap: nowrap;
   }
 }
+

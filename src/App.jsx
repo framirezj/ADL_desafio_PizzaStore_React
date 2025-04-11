@@ -16,7 +16,15 @@ function App() {
       <main className="container-home">
         {/* <Home /> */}
         {/* <Register /> */}
-        <Login />
+
+
+        <div className="container-access">
+          <div className="access-image">            
+          </div>
+          {/* <Login /> */}
+          <Register />
+        </div>
+        
       </main>
       <footer className="container-footer">
         <Footer />

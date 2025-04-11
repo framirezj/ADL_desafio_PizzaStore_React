@@ -1,4 +1,5 @@
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //usa solo un useState y relaciono los datos en un objeto
 const Login = () => {
@@ -49,10 +50,11 @@ const Login = () => {
 
   return (
     <>
-      <form style={{ color: "black" }} onSubmit={handleSubmit}>
+      <form className="form-login" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label className="form-label" htmlFor="email">Email:</label>
           <input
+          className="form-control"
             type="email"
             id="email"
             name="email" //importante porque relaciona los datos con el objeto
@@ -62,8 +64,9 @@ const Login = () => {
         </div>
 
         <div>
-          <label htmlFor="password">Contraseña:</label>
+          <label className="form-label" htmlFor="password">Contraseña:</label>
           <input
+          className="form-control"
             type="password"
             id="password"
             name="password" //importante porque relaciona los datos con el objeto
@@ -72,7 +75,7 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit">Login</button>
+        <button className="btn btn-primary mb-3" type="submit">Login</button>
       </form>
     </>
   );
