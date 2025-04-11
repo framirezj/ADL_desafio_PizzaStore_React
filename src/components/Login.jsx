@@ -4,46 +4,48 @@ import { useState } from "react";
 const Login = () => {
   const [datosLogin, setDatosLogin] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   //hago un destructurin para ocupar solo el nombre de la propiedad y no datoLogin.email...
-  const { email, password } = datosLogin
+  const { email, password } = datosLogin;
 
   const handleChangeObject = (e) => {
-
     //accede a las propiedades del elemento desde el evento
-    const {name , value} = e.target
+    const { name, value } = e.target;
 
     //actualizar el estado del objeto
-    setDatosLogin(prevState =>  ({
-       ...prevState, [name]: value
-    }))
-  
-  }
-
+    setDatosLogin((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
-
-    if(!email.trim() || !password.trim()){
-      alert('todos los campos son obligatorios')
-      return
+    if (!email.trim() || !password.trim()) {
+      alert("todos los campos son obligatorios");
+      return;
     }
 
-    if(password.length < 6){
-      alert('password debe ser al menos de 6 caracteres')
-      return
+    if (password.length < 6) {
+      alert("password debe ser al menos de 6 caracteres");
+      return;
     }
 
-    if(email === 'correo@gmail.com' && password === '123456'){
-      alert('Welcome!!!')
-    }else{
-      alert('Email y/o Password Incorrectos!')
+    if (email === "correo@gmail.com" && password === "123456") {
+      alert("Welcome!!!");
+    } else {
+      alert("Email y/o Password Incorrectos!");
+      return;
     }
 
-  }
+    setDatosLogin({
+      email: "",
+      password: "",
+    });
+  };
 
   return (
     <>

@@ -15,8 +15,8 @@ function App() {
       </div>
       <main className="container-home">
         {/* <Home /> */}
-        <Register />
-        {/* <Login /> */}
+        {/* <Register /> */}
+        <Login />
       </main>
       <footer className="container-footer">
         <Footer />
