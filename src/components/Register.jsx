@@ -1,48 +1,83 @@
 import { useState } from "react";
 
 const Register = () => {
+  const [datosRegister, setDatosRegister] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-    //estados
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+  const { email, password, confirmPassword } = datosRegister;
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
+  const handleChangeObject = (e) => {
+    const { name, value } = e.target;
 
+    setDatosRegister((prevDatosRegister) => ({
+      ...prevDatosRegister,
+      [name]: value,
+    }));
+  };
 
-      if(!email.trim() || !password.trim() || !confirmPassword.trim()){
-        alert('todos los campos son obligatorios')
-        return
-      }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-      if(password.length < 6){
-        alert('password debe ser al menos de 6 caracteres')
-        return
-      }
-
-      if(password !== confirmPassword){
-        alert('password no coincide')
-      }
-
+    if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
+      alert("todos los campos son obligatorios");
+      return;
     }
 
+    if (password.length < 6) {
+      alert("password debe ser al menos de 6 caracteres");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("password no coincide");
+      return;
+    }
+
+    alert("Bienvenido!!!");
+
+    setDatosRegister({
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
 
   return (
     <>
-      <form style={{color: "black"}} onSubmit={handleSubmit}>
+      <form style={{ color: "black" }} onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)}/>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleChangeObject}
+          />
         </div>
         <div>
           <label htmlFor="password">Contraseña:</label>
-          <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleChangeObject}
+          />
         </div>
 
         <div>
           <label htmlFor="confirmPassword">Confirmar Contraseña:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={handleChangeObject}
+          />
         </div>
 
         <button type="submit">Registrarse</button>
