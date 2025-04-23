@@ -14,8 +14,8 @@ function App() {
         <Navbar />
       </div>
       <main className="container-home">
-        {/* <Home /> */}
-        <Login />
+        <Home />
+        {/* <Login /> */}
         {/* <Register /> */}
       </main>
       <footer className="container-footer">

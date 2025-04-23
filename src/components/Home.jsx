@@ -1,6 +1,8 @@
 import Header from "./Header";
 import CardPizza from "./CardPizza";
 import "../../src/index.css";
+import "../pizzas.js";
+
 
 const Home = () => {
   return (
