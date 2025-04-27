@@ -104,6 +104,7 @@
   .container-cart{
     color: #1e1e1e;
     width: 400px;
+    text-align: start;
   }
 
   .container-cart ul{
@@ -114,6 +115,7 @@
     justify-content: start;
     align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
   }
 
   .container-cart li{
@@ -165,6 +167,11 @@
   .cart-cantidades .decrease{
     color: red;
     border-color: red;
+  }
+
+  .container-cart p{
+    font-weight: bold;
+    font-size: 1.5rem;
   }
 }
 

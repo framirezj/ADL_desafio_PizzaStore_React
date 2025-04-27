@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { pizzaCart } from "../pizzas";
+import formatPrice from "../utils/formatPrice";
 
 const Cart = () => {
   const [pizzas, setPizzas] = useState(pizzaCart);
@@ -27,7 +28,7 @@ const Cart = () => {
 
   return (
     <div className="container-cart">
-      <p>Detalles del pedido</p>
+      <h3>Detalles del pedido:</h3>
 
       {/* detalle */}
       <ul>
@@ -36,11 +37,11 @@ const Cart = () => {
             <li key={pizza.id}>
               <img src={pizza.img} />
               <span className="name-pizza">{pizza.name}</span>
-              <span className="price-pizza">${pizza.price}</span>
+              <span className="price-pizza">${formatPrice(pizza.price)}</span>
               <div className="cart-cantidades">
                 <button className="increase" onClick={() => increasePizzas(pizza.id)}>+</button>
                 <span>{pizza.count}</span>
-                <button className="decrease" onClick={() => decreasePizzas(pizza.id)}>-</button>
+                <button className="decrease " onClick={() => decreasePizzas(pizza.id)}>-</button>
               </div>
             </li>
           ) : null
@@ -48,20 +49,12 @@ const Cart = () => {
       </ul>
 
       <p>
-        total: <span>$ {total}</span>
+        Total: <span>$ {formatPrice(total)}</span>
       </p>
-      <button>Pagar</button>
+      <button className="btn btn-dark">Pagar</button>
     </div>
   );
 };
 
 export default Cart;
 
-/* <li key={pizza.id}>
-            <img src={pizza.img} />
-            <span>{pizza.name}</span>
-            <span>{pizza.price}</span>
-            <button onClick={() => incrementPizzas(pizza.id)}>+</button>
-            <span>{pizza.count}</span>
-            <button onClick={() => decreasePizzas(pizza.id)}>-</button>
-          </li> */
