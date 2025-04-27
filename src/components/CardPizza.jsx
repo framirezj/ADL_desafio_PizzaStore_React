@@ -2,9 +2,15 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import formatPrice from "../utils/formatPrice";
-import formatIngredients from "../utils/formatIngredients";
+/* import formatIngredients from "../utils/formatIngredients"; */
 
 const CardPizza = ({ name, price, ingredients, img }) => {
+
+  const handleIngredients = (list) => {
+    return list.map(
+      (ing, index) => 
+        (<li key={index}>{ing}{index < ingredients.length -1 ? ',' : ''}</li>))
+  }
 
   return (
     <Card style={{ width: "25rem" }} className="">
@@ -12,7 +18,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
       <Card.Body>
         <Card.Title className="text-start">Pizza {name}</Card.Title>
         <Card.Text className="fw-light border-top">Ingredientes:</Card.Text>
-        <Card.Text className="border-bottom">🍕 {formatIngredients(ingredients)}</Card.Text>
+        <Card.Text className="border-bottom">🍕 <ul className="d-inline-flex list-unstyled gap-1 ">{handleIngredients(ingredients)}</ul></Card.Text>
         <Card.Text className="fw-bold fs-5">Precio: ${formatPrice(price)}</Card.Text>
         <div className="d-flex justify-content-around gap-2">
           <Button variant="outline-dark">Ver Más 👀</Button>

@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Cart from "./components/Cart";
 
 function App() {
   console.log("hola");
@@ -15,8 +16,9 @@ function App() {
       </div>
       <main className="container-home">
         {/* <Home /> */}
-        <Login />
+        {/* <Login /> */}
         {/* <Register /> */}
+        <Cart />
       </main>
       <footer className="container-footer">
         <Footer />
