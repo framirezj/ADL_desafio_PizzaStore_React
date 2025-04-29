@@ -15,10 +15,10 @@ function App() {
         <Navbar />
       </div>
       <main className="container-home">
-        {/* <Home /> */}
+        <Home />
         {/* <Login /> */}
         {/* <Register /> */}
-        <Cart />
+        {/* <Cart /> */}
       </main>
       <footer className="container-footer">
         <Footer />
