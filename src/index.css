@@ -7,6 +7,8 @@
 .app-container {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 /* Navbar */
@@ -135,6 +137,29 @@
 .container-cart p{
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+/* pizza */
+
+.container-pizza{
+  width: 80%;
+  margin-top: 1rem;
+  border: #1e1e1e 1px solid;
+  color: #1e1e1e;
+}
+
+.container-pizza img{
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.description-pizza, .description-image{
+  
+}
+
+.description-pizza{
+  padding: 1rem;
 }
 
 /* footer */
