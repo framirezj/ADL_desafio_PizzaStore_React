@@ -44,7 +44,7 @@ const Pizza = () => {
         <div>
           <ul>{handleIngredients(pizza.ingredients)}</ul>
         </div>
-        <p>Precio: ${formatPrice(pizza.price)}</p>
+        <p className="fs-3 fw.bolder">Precio: ${formatPrice(pizza.price)}</p>
         <button className="btn btn-dark">Añadir 🛒</button>
       </div>
     </div>
