@@ -7,6 +7,8 @@
 .app-container {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 /* Navbar */
@@ -63,14 +65,14 @@
 }
 
 /*Cart*/
-.container-cart{
+.container-cart {
   color: #1e1e1e;
   width: 400px;
   text-align: start;
   margin-top: 2rem;
 }
 
-.container-cart ul{
+.container-cart ul {
   padding: 0;
   width: 100%;
   display: flex;
@@ -81,15 +83,15 @@
   margin-top: 1rem;
 }
 
-.container-cart li{
+.container-cart li {
   list-style: none;
   width: 100%;
-  display: flex;  
-  align-items: center;  
+  display: flex;
+  align-items: center;
   text-align: start;
 }
 
-.container-cart li img{
+.container-cart li img {
   width: 100px;
   margin-right: 0.5rem;
 }
@@ -99,21 +101,21 @@
   font-weight: bold;
 }
 
-.price-pizza{
+.price-pizza {
   margin-right: 0.5rem;
 }
 
-.cart-cantidades{
+.cart-cantidades {
   display: flex;
   align-items: center;
 }
 
-.cart-cantidades span{
+.cart-cantidades span {
   margin: 0 5px;
 }
 
-.cart-cantidades button{
-  all:unset;
+.cart-cantidades button {
+  all: unset;
   width: 25px;
   height: 25px;
   border: 1px solid;
@@ -122,19 +124,52 @@
   text-align: center;
 }
 
-.cart-cantidades .increase{
+.cart-cantidades .increase {
   color: blue;
   border-color: blue;
 }
 
-.cart-cantidades .decrease{
+.cart-cantidades .decrease {
   color: red;
   border-color: red;
 }
 
-.container-cart p{
+.container-cart p {
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+/* pizza */
+
+.container-pizza {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin-top: 1rem;
+  color: #1e1e1e;
+  text-align: start;
+}
+
+.container-pizza h3 {
+  border-bottom: #1e1e1e 0.5px solid;
+  padding: 1rem 1rem 1rem 0;
+}
+
+.container-pizza img {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: #1e1e1e 8px solid;
+  box-shadow: -14px -2px 37px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -14px -2px 37px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -14px -2px 37px -3px rgba(0, 0, 0, 0.75);
+}
+
+.description-pizza {
+  padding: 1rem;
+  max-width: 450px;
 }
 
 /* footer */
@@ -175,5 +210,15 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-}
+  /* pizza */
+  .container-pizza {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+  }
 
+  .container-pizza img {
+    width: 350px;
+    height: 100%;
+  }
+}

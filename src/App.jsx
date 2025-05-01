@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Cart from "./components/Cart";
+import Pizza from "./components/Pizza"
+
 
 function App() {
   console.log("hola");
@@ -18,7 +20,8 @@ function App() {
         {/* <Home /> */}
         {/* <Login /> */}
         {/* <Register /> */}
-        <Cart />
+        {/* <Cart /> */}
+        <Pizza />
       </main>
       <footer className="container-footer">
         <Footer />

@@ -18,7 +18,11 @@ const CardPizza = ({ name, price, ingredients, img }) => {
       <Card.Body>
         <Card.Title className="text-start">Pizza {name}</Card.Title>
         <Card.Text className="fw-light border-top">Ingredientes:</Card.Text>
-        <Card.Text className="border-bottom">🍕 <ul className="d-inline-flex list-unstyled gap-1 ">{handleIngredients(ingredients)}</ul></Card.Text>
+        <div className="border-bottom">
+          <span>🍕</span>
+          <ul className="d-inline-flex list-unstyled gap-1">{handleIngredients(ingredients)}</ul>
+        </div>
+        {/* <Card.Text className="border-bottom">🍕 <ul className="d-inline-flex list-unstyled gap-1 ">{handleIngredients(ingredients)}</ul></Card.Text> */}
         <Card.Text className="fw-bold fs-5">Precio: ${formatPrice(price)}</Card.Text>
         <div className="d-flex justify-content-around gap-2">
           <Button variant="outline-dark">Ver Más 👀</Button>
