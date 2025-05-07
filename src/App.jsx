@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Pizza from "./pages/Pizza";
+import NotFound from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/pizza/p001" element={<Pizza />} />
           {/* <Route path="/profile" element={<Profile/>} /> */}
-          {/* <Route path="*" element={<NotFound/>} /> */}
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </main>
       <footer className="container-footer">
