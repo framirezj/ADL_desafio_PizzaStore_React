@@ -23,6 +23,9 @@ const Navbar = () => {
             {token ? `🔒 Logout` : `🔐 Register`}
           </Button>
         </Link>
+        <Link to="profile">
+          <Button variant="outline-light">😃 Profile</Button>
+        </Link>
       </div>
       <div className="total-button">
         <Link to="cart">
