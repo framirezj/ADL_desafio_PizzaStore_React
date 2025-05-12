@@ -7,8 +7,8 @@ import { CartContext } from "../context/CartContext";
 
 
 const Navbar = () => {
-  const { cart } = useContext(CartContext)
-  //const total = 25000;
+  /* const { cart } = useContext(CartContext) */
+  const total = 25000;
   const token = false;
 
   return (
@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="total-button">
         <Link to="cart">
           <Button variant="outline-info">
-            🛒 Total: ${formatPrice(cart)}
+            🛒 Total: ${formatPrice(total)}
           </Button>
         </Link>
       </div>
