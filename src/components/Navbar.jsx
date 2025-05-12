@@ -1,9 +1,14 @@
 import Button from "react-bootstrap/Button";
 import formatPrice from "../utils/formatPrice";
 import { Link } from "react-router-dom";
+//context
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 
 const Navbar = () => {
-  const total = 25000;
+  const { cart } = useContext(CartContext)
+  //const total = 25000;
   const token = false;
 
   return (
@@ -30,7 +35,7 @@ const Navbar = () => {
       <div className="total-button">
         <Link to="cart">
           <Button variant="outline-info">
-            🛒 Total: ${formatPrice(total)}
+            🛒 Total: ${formatPrice(cart)}
           </Button>
         </Link>
       </div>
