@@ -31,7 +31,7 @@ const CardPizza = ({ id, name, price, ingredients, img }) => {
         <Card.Text className="fw-bold fs-5">Precio: ${formatPrice(price)}</Card.Text>
         <div className="d-flex justify-content-around gap-2">
           <Button variant="outline-dark">Ver Más 👀</Button>
-          <Button variant="dark" onClick={() => addToCart(id)}>Añadir 🛒</Button>
+          <Button variant="dark" onClick={() => addToCart(id, name, price, img)}>Añadir 🛒</Button>
         </div>
       </Card.Body>
     </Card>

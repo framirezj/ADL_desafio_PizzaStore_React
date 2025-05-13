@@ -3,58 +3,42 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  //elementos de carrito
-  const [cartItems, setCartItems] = useState([
-    {
-      id: "P001",
-      name: "napolitana",
-      price: 5950,
-      count: 1,
-      img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c",
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
-  //funcionalidad para agregar desde el home las pizzas MODIFRICAR ESTE PORQUE NO COINCIDE EL OBJETO
-  const addToCart = (id) => {
+  //esta funcion se llama desde las pizzas del home con el boton añadir al carrito
+  //creamos un formato de objeto para la nueva pizza y por defecto con una unidad "count: 1"
+  //si existe la pizza en el carrito le agregamos uno mas a count, si no existe agregamos la nueva al arreglo
+  const addToCart = (id, name, price, img) => {
+    const newPizza = { id, name, price, img, count: 1 };
+
     setCartItems((prev) => {
-      prev.map((pizza) => {
-        console.log(pizza)
-        pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza;
-      });
+      const pizzaExists = prev.find((item) => item.id === newPizza.id);
+
+      if (pizzaExists) {
+        return prev.map((pizza) =>
+          pizza.id === newPizza.id
+            ? { ...pizza, count: pizza.count + 1 }
+            : pizza
+        );
+      } else {
+        return [...prev, newPizza];
+      }
     });
   };
 
+  //acumulador para el total
+  const total = cartItems.reduce(
+    (acc, pizza) => acc + pizza.price * pizza.count,
+    0
+  );
+
+
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, addToCart, setCartItems, total }}>
       {children}
     </CartContext.Provider>
   );
 };
 
 export default CartProvider;
-
-
- /* 
- const addToCart = (pizza) => {
-  setCartItems((prev) => {
-    const pizzaExists = prev.find((item) => item.id === pizza.id);
-
-    if (pizzaExists) {
-      // Incrementar el count si ya existe
-      return prev.map((item) =>
-        item.id === pizza.id ? { ...item, count: item.count + 1 } : item
-      );
-    } else {
-      // Agregar una nueva pizza al carrito
-      return [
-        ...prev,
-        {
-          ...pizza,
-          count: 1, // Nueva pizza comienza con count = 1
-        },
-      ];
-    }
-  });
-};
- 
- */
