@@ -3,8 +3,13 @@ import Card from "react-bootstrap/Card";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import formatPrice from "../utils/formatPrice";
 /* import formatIngredients from "../utils/formatIngredients"; */
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ id, name, price, ingredients, img }) => {
+
+  //solo accedo al metodo para agregar pizzas en el contexto
+  const { addToCart } = useContext(CartContext)
 
   const handleIngredients = (list) => {
     return list.map(
@@ -26,7 +31,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         <Card.Text className="fw-bold fs-5">Precio: ${formatPrice(price)}</Card.Text>
         <div className="d-flex justify-content-around gap-2">
           <Button variant="outline-dark">Ver Más 👀</Button>
-          <Button variant="dark">Añadir 🛒</Button>
+          <Button variant="dark" onClick={() => addToCart(id)}>Añadir 🛒</Button>
         </div>
       </Card.Body>
     </Card>

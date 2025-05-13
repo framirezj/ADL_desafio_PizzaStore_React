@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { pizzaCart } from "../pizzas";
 import formatPrice from "../utils/formatPrice";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
   const [pizzas, setPizzas] = useState(pizzaCart);
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const increasePizzas = (id) => {
     setPizzas((prev) =>
@@ -32,16 +35,26 @@ const Cart = () => {
 
       {/* detalle */}
       <ul>
-        {pizzas.map((pizza) =>
+        {cartItems.map((pizza) =>
           pizza.count > 0 ? (
             <li key={pizza.id}>
               <img src={pizza.img} />
               <span className="name-pizza">{pizza.name}</span>
               <span className="price-pizza">${formatPrice(pizza.price)}</span>
               <div className="cart-cantidades">
-                <button className="increase" onClick={() => increasePizzas(pizza.id)}>+</button>
+                <button
+                  className="increase"
+                  onClick={() => increasePizzas(pizza.id)}
+                >
+                  +
+                </button>
                 <span>{pizza.count}</span>
-                <button className="decrease " onClick={() => decreasePizzas(pizza.id)}>-</button>
+                <button
+                  className="decrease "
+                  onClick={() => decreasePizzas(pizza.id)}
+                >
+                  -
+                </button>
               </div>
             </li>
           ) : null
@@ -57,4 +70,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

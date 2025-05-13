@@ -1,8 +1,13 @@
 import Button from "react-bootstrap/Button";
 import formatPrice from "../utils/formatPrice";
 import { Link } from "react-router-dom";
+//context
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 
 const Navbar = () => {
+  /* const { cart } = useContext(CartContext) */
   const total = 25000;
   const token = false;
 
