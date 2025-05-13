@@ -7,8 +7,9 @@ import { CartContext } from "../context/CartContext";
 
 
 const Navbar = () => {
-  /* const { cart } = useContext(CartContext) */
-  const total = 25000;
+  const { total } = useContext(CartContext)
+
+  /* const total = 25000; */
   const token = false;
 
   return (
@@ -18,22 +19,22 @@ const Navbar = () => {
         <Link to="/">
           <Button variant="outline-light">🍕 Home</Button>
         </Link>
-        <Link to="login">
+        <Link to="/login">
           <Button variant="outline-light">
             {token ? `🔓 Profile` : `🔐 Login`}
           </Button>
         </Link>
-        <Link to="register">
+        <Link to="/register">
           <Button variant="outline-light">
             {token ? `🔒 Logout` : `🔐 Register`}
           </Button>
         </Link>
-        <Link to="profile">
+        <Link to="/profile">
           <Button variant="outline-light">😃 Profile</Button>
         </Link>
       </div>
       <div className="total-button">
-        <Link to="cart">
+        <Link to="/cart">
           <Button variant="outline-info">
             🛒 Total: ${formatPrice(total)}
           </Button>
