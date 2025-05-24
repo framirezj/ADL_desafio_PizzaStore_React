@@ -1,6 +1,7 @@
 import formatPrice from "../utils/formatPrice";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
   const {
@@ -8,6 +9,8 @@ const Cart = () => {
     setCartItems: setPizzas,
     total,
   } = useContext(CartContext);
+
+  const { token } = useContext(UserContext);
 
   const increasePizzas = (id) => {
     setPizzas((prev) =>
@@ -19,10 +22,11 @@ const Cart = () => {
 
   const decreasePizzas = (id) => {
     setPizzas((prev) =>
-      prev.map((pizza) =>
-        pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-      )
-      .filter((pizza) => pizza.count > 0)
+      prev
+        .map((pizza) =>
+          pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
+        )
+        .filter((pizza) => pizza.count > 0)
     );
   };
 
@@ -61,7 +65,7 @@ const Cart = () => {
       <p>
         Total: <span>$ {formatPrice(total)}</span>
       </p>
-      <button className="btn btn-dark">Pagar</button>
+      {token && <button className="btn btn-dark">Pagar</button>}
     </div>
   );
 };
