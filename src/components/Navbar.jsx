@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 //context
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
-  const { total } = useContext(CartContext)
+  const { total } = useContext(CartContext);
+  const { token, logout } = useContext(UserContext);
 
   /* const total = 25000; */
-  const token = false;
+  //const token = false;
 
   return (
     <>
@@ -19,19 +20,25 @@ const Navbar = () => {
         <Link to="/">
           <Button variant="outline-light">🍕 Home</Button>
         </Link>
-        <Link to="/login">
-          <Button variant="outline-light">
-            {token ? `🔓 Profile` : `🔐 Login`}
-          </Button>
-        </Link>
-        <Link to="/register">
-          <Button variant="outline-light">
-            {token ? `🔒 Logout` : `🔐 Register`}
-          </Button>
-        </Link>
-        <Link to="/profile">
-          <Button variant="outline-light">😃 Profile</Button>
-        </Link>
+        {token ? (
+          <>
+            <Link to="/profile">
+              <Button variant="outline-light">🔓 Profile</Button>
+            </Link>
+            <Button variant="outline-light" onClick={logout}>
+              🔒 Logout
+            </Button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <Button variant="outline-light">🔐 Login</Button>
+            </Link>
+            <Link to="/register">
+              <Button variant="outline-light">🔐 Register</Button>
+            </Link>
+          </>
+        )}
       </div>
       <div className="total-button">
         <Link to="/cart">

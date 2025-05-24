@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import formatPrice from "../utils/formatPrice";
+import { useParams } from "react-router-dom";
 /* import 'bootstrap/dist/css/bootstrap.min.css'; */
 
 const Pizza = () => {
@@ -10,7 +11,9 @@ const Pizza = () => {
     price: 0
   });
 
-  let url = `http://localhost:5000/api/pizzas/p001`;
+  const { id } = useParams();
+
+  let url = `http://localhost:5000/api/pizzas/${id}`;
 
   const getData = async () => {
     const response = await fetch(url);

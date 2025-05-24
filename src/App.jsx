@@ -9,13 +9,18 @@ import Cart from "./pages/Cart";
 import Pizza from "./pages/Pizza";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import { Route, Routes } from "react-router-dom";
+import {  Navigate, Route, Routes } from "react-router-dom";
 import CartProvider from "./context/CartContext";
+import { UserContext } from "./context/UserContext";
+import { useContext } from "react";
 
 function App() {
-  console.log("hola");
+
+  const { token } = useContext(UserContext)
+
   return (
     <div className="app-container">
+      
       <CartProvider>
       <div className="container-navbar">        
         <Navbar />
@@ -23,11 +28,11 @@ function App() {
       <main className="container-home">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={ !token ? <Login /> : <Navigate to="/" replace/>} />
+          <Route path="/register" element={ !token ? <Register /> : <Navigate to="/" replace/> } />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/pizza/p001" element={<Pizza />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/pizzas/:id" element={<Pizza />} />
+          <Route path="/profile" element={ token ? <Profile /> : <Navigate to="/login" replace/>} />
           <Route path="*" element={<NotFound/>} />
         </Routes>       
       </main>
@@ -35,6 +40,7 @@ function App() {
         <Footer />
       </footer>
       </CartProvider>
+      
     </div>
   );
 }
