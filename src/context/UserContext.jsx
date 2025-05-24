@@ -1,4 +1,5 @@
-import { Children, createContext, useState } from "react";
+import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 
 //context
 export const UserContext = createContext();
@@ -7,13 +8,18 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [token, setToken] = useState(true);
 
+  const navigate = useNavigate()
+
   const logout = () => {
+    console.log("logout....")
     setToken(false)
+    navigate("/login")
+    
   }
 
   return (
     <UserContext.Provider value={{ token, logout }}>
-      {children}
+      { children }
     </UserContext.Provider>
   );
 };

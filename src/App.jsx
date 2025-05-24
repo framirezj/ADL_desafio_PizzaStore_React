@@ -11,11 +11,12 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
 import CartProvider from "./context/CartContext";
+import UserProvider from "./context/UserContext";
 
 function App() {
-  console.log("hola");
   return (
     <div className="app-container">
+      <UserProvider>
       <CartProvider>
       <div className="container-navbar">        
         <Navbar />
@@ -35,6 +36,7 @@ function App() {
         <Footer />
       </footer>
       </CartProvider>
+      </UserProvider>
     </div>
   );
 }
