@@ -4,16 +4,12 @@ import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
-  const {
-    cartItems: pizzas,
-    setCartItems: setPizzas,
-    total,
-  } = useContext(CartContext);
+  const { cartItems: pizzas, setCartItems: setPizzas, total} = useContext(CartContext);
 
   const { token } = useContext(UserContext);
 
   const increasePizzas = (id) => {
-    setPizzas((prev) =>
+    setPizzas((prev) => 
       prev.map((pizza) =>
         pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
       )
@@ -29,6 +25,34 @@ const Cart = () => {
         .filter((pizza) => pizza.count > 0)
     );
   };
+
+  //hito8 enviar carrito al backend
+  const buy = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/checkouts",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.token}`
+        },
+        body: JSON.stringify({cart: pizzas})
+        
+      })
+
+      
+      if(!response.ok){
+        const errorData = await response.json()
+        throw new Error(errorData.message || "Error al procesar el pedido");
+      }
+
+      //console.log( await response.json())
+      alert("ÑAM ÑAM")
+      setPizzas([])
+
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   return (
     <div className="container-cart">
@@ -65,7 +89,7 @@ const Cart = () => {
       <p>
         Total: <span>$ {formatPrice(total)}</span>
       </p>
-      {token && <button className="btn btn-dark">Pagar</button>}
+      {token && <button className="btn btn-dark" onClick={buy}>Pagar</button>}
     </div>
   );
 };
