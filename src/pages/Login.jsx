@@ -1,5 +1,7 @@
 import { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //usa solo un useState y relaciono los datos en un objeto
 const Login = () => {
@@ -10,6 +12,9 @@ const Login = () => {
 
   //hago un destructurin para ocupar solo el nombre de la propiedad y no datoLogin.email...
   const { email, password } = datosLogin;
+
+  //usercontext
+  const { login } = useContext(UserContext)
 
   const handleChangeObject = (e) => {
     //accede a las propiedades del elemento desde el evento
@@ -22,7 +27,7 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email.trim() || !password.trim()) {
@@ -35,26 +40,42 @@ const Login = () => {
       return;
     }
 
-    if (email === "correo@gmail.com" && password === "123456") {
-      alert("Welcome!!!");
-    } else {
-      alert("Email y/o Password Incorrectos!");
-      return;
-    }
+    //hito8
+    try {
+      //fetch
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(datosLogin),
+      });
 
-    setDatosLogin({
-      email: "",
-      password: "",
-    });
+      if (!response.ok) {
+        throw new Error("Email y/o Password Incorrectos!");
+      }
+
+      //data
+      const data = await response.json();
+      login(data)      
+      setDatosLogin({
+        email: "",
+        password: "",
+      });
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
     <>
       <form className="form-login" onSubmit={handleSubmit}>
         <div>
-          <label className="form-label" htmlFor="email">Email:</label>
+          <label className="form-label" htmlFor="email">
+            Email:
+          </label>
           <input
-          className="form-control"
+            className="form-control"
             type="email"
             id="email"
             name="email" //importante porque relaciona los datos con el objeto
@@ -64,9 +85,11 @@ const Login = () => {
         </div>
 
         <div>
-          <label className="form-label" htmlFor="password">Contraseña:</label>
+          <label className="form-label" htmlFor="password">
+            Contraseña:
+          </label>
           <input
-          className="form-control"
+            className="form-control"
             type="password"
             id="password"
             name="password" //importante porque relaciona los datos con el objeto
@@ -75,7 +98,9 @@ const Login = () => {
           />
         </div>
 
-        <button className="btn btn-primary mb-3" type="submit">Login</button>
+        <button className="btn btn-primary mb-3" type="submit">
+          Login
+        </button>
       </form>
     </>
   );

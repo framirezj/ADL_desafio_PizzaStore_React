@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
@@ -10,6 +12,9 @@ const Register = () => {
 
   const { email, password, confirmPassword } = datosRegister;
 
+  //context
+  const { login } = useContext(UserContext)
+
   const handleChangeObject = (e) => {
     const { name, value } = e.target;
 
@@ -19,7 +24,7 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
@@ -37,22 +42,48 @@ const Register = () => {
       return;
     }
 
-    alert("Bienvenido!!!");
+    //hito8 register
+    try {
 
-    setDatosRegister({
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: datosRegister.email,
+          password: datosRegister.password
+        })
+      })
+
+      if(!response.ok){
+        const errorData = await response.json()
+        throw new Error(errorData.message || "Error al registrar usuario")
+      }
+
+      //data
+      const data = await response.json()
+      login(data)
+
+      setDatosRegister({
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      alert(error.message)
+    }
   };
 
   return (
     <>
       <form className="form-login" onSubmit={handleSubmit}>
         <div>
-          <label className="form-label" htmlFor="email">Email:</label>
+          <label className="form-label" htmlFor="email">
+            Email:
+          </label>
           <input
-          className="form-control"
+            className="form-control"
             type="email"
             id="email"
             name="email"
@@ -61,9 +92,11 @@ const Register = () => {
           />
         </div>
         <div>
-          <label className="form-label" htmlFor="password">Contraseña:</label>
+          <label className="form-label" htmlFor="password">
+            Contraseña:
+          </label>
           <input
-          className="form-control"
+            className="form-control"
             type="password"
             id="password"
             name="password"
@@ -73,9 +106,11 @@ const Register = () => {
         </div>
 
         <div>
-          <label className="form-label" htmlFor="confirmPassword">Confirmar Contraseña:</label>
+          <label className="form-label" htmlFor="confirmPassword">
+            Confirmar Contraseña:
+          </label>
           <input
-          className="form-control"
+            className="form-control"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
@@ -84,7 +119,9 @@ const Register = () => {
           />
         </div>
 
-        <button className="btn btn-primary mb-3" type="submit">Registrarse</button>
+        <button className="btn btn-primary mb-3" type="submit">
+          Registrarse
+        </button>
       </form>
     </>
   );
