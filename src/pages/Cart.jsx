@@ -2,14 +2,19 @@ import formatPrice from "../utils/formatPrice";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
+import Swal from "sweetalert2";
 
 const Cart = () => {
-  const { cartItems: pizzas, setCartItems: setPizzas, total} = useContext(CartContext);
+  const {
+    cartItems: pizzas,
+    setCartItems: setPizzas,
+    total,
+  } = useContext(CartContext);
 
-  const { token } = useContext(UserContext);
+  const { token, navigate } = useContext(UserContext);
 
   const increasePizzas = (id) => {
-    setPizzas((prev) => 
+    setPizzas((prev) =>
       prev.map((pizza) =>
         pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
       )
@@ -29,30 +34,32 @@ const Cart = () => {
   //hito8 enviar carrito al backend
   const buy = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/checkouts",{
+      const response = await fetch("http://localhost:5000/api/checkouts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token.token}`
+          Authorization: `Bearer ${token.token}`,
         },
-        body: JSON.stringify({cart: pizzas})
-        
-      })
+        body: JSON.stringify({ cart: pizzas }),
+      });
 
-      
-      if(!response.ok){
-        const errorData = await response.json()
+      if (!response.ok) {
+        const errorData = await response.json();
         throw new Error(errorData.message || "Error al procesar el pedido");
       }
 
       //console.log( await response.json())
-      alert("ÑAM ÑAM")
-      setPizzas([])
-
+      Swal.fire({
+        title: "ÑAM ÑAM",
+        icon: "success",
+        draggable: true,
+      });
+      setPizzas([]);
+      navigate("/");
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
-  }
+  };
 
   return (
     <div className="container-cart">
@@ -89,7 +96,11 @@ const Cart = () => {
       <p>
         Total: <span>$ {formatPrice(total)}</span>
       </p>
-      {token && <button className="btn btn-dark" onClick={buy}>Pagar</button>}
+      {token && (
+        <button className="btn btn-dark" onClick={buy}>
+          Pagar
+        </button>
+      )}
     </div>
   );
 };

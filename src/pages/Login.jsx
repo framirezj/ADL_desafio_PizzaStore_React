@@ -58,8 +58,6 @@ const Login = () => {
       //data
       const data = await response.json();
       login(data)      
-      alert("Welcome!!!!!");
-
       setDatosLogin({
         email: "",
         password: "",

@@ -64,7 +64,6 @@ const Register = () => {
       //data
       const data = await response.json()
       login(data)
-      alert("Bienvenido!!!");
 
       setDatosRegister({
         email: "",

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 //context
 export const UserContext = createContext();
@@ -18,13 +19,18 @@ const UserProvider = ({ children }) => {
   const logout = () => {
     setToken(null);
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   //login
   const login = (data) => {
     setToken(data);
     localStorage.setItem("token", JSON.stringify(data));
+    Swal.fire({
+            title: "Bienvenidoo!!",
+            icon: "success",
+            draggable: true,
+          });
     navigate("/");
   };
 
@@ -57,7 +63,7 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ token, logout, login, profile }}>
+    <UserContext.Provider value={{ token, logout, login, profile, navigate }}>
       {children}
     </UserContext.Provider>
   );
