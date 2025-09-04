@@ -13,7 +13,7 @@ const Pizza = () => {
 
   const { id } = useParams();
 
-  let url = `http://localhost:5000/api/pizzas/${id}`;
+  let url = `${import.meta.env.VITE_API_URL}/api/pizzas${id}`;
 
   const getData = async () => {
     const response = await fetch(url);

@@ -9,7 +9,7 @@ const Home = () => {
   const [pizzas, setPizzas] = useState([]);
 
   /* obtiene los datos */
-  const url = "http://localhost:5000/api/pizzas";
+  const url = `${import.meta.env.VITE_API_URL}/api/pizzas`;
 
   const getData = async () => {
     const response = await fetch(url);
