@@ -39,7 +39,7 @@ body:
 
 ```json
 {
-  "email": "test@example.com",
+  "email": "test@test.com",
   "password": "123123"
 }
 ```
