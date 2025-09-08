@@ -1,13 +1,14 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Button, Card, Placeholder } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import formatPrice from "../utils/formatPrice";
 /* import formatIngredients from "../utils/formatIngredients"; */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 const CardPizza = ({ id, name, price, ingredients, img }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   //solo accedo al metodo para agregar pizzas en el contexto
   const { addToCart } = useContext(CartContext);
 
@@ -22,7 +23,29 @@ const CardPizza = ({ id, name, price, ingredients, img }) => {
 
   return (
     <Card style={{ width: "25rem" }} className="">
-      <Card.Img variant="top" src={img} />
+      
+      {/* reserva el espacio de la imagen */}
+      {!imgLoaded && (
+        <Placeholder
+          as="div"
+          animation="glow"
+          style={{ width: "100%", height: "264px", backgroundColor: "#f0f0f0" }}
+        >
+          <Placeholder xs={12} style={{ height: "100%" }} />
+        </Placeholder>
+      )}
+
+      <Card.Img
+        variant="top"
+        src={img}
+        onLoad={() => setImgLoaded(true)}
+        style={{
+          display: imgLoaded ? "block" : "none",
+          height: "264px",
+          objectFit: "cover",
+        }}
+      />
+
       <Card.Body>
         <Card.Title className="text-start">Pizza {name}</Card.Title>
         <Card.Text className="fw-light border-top">Ingredientes:</Card.Text>
