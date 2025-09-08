@@ -1,6 +1,10 @@
 # PizzaStore 🍕
 
 Aplicación fullstack para una pizzería, desarrollada con React (frontend) y Node.js/Express (backend). Permite visualizar pizzas, autenticarse, registrarse, gestionar el carrito y realizar pedidos.
+https://adl-desafio-pizzastore-react.onrender.com/
+
+<img width="1845" height="947" alt="image" src="https://github.com/user-attachments/assets/22838764-831c-446f-b578-16cf59055126" />
+
 
 ## Estructura del Proyecto
 
