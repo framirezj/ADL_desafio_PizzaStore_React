@@ -7,15 +7,21 @@ import { useState, useEffect } from "react";
 const Home = () => {
   /* variables de estado */
   const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   /* obtiene los datos */
   const url = `${import.meta.env.VITE_API_URL}/api/pizzas`;
 
   const getData = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setPizzas(data);
-    
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setPizzas(data);
+    } catch (error) {
+      console.error("Error al traer datos:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   /* useEfect */
@@ -28,18 +34,24 @@ const Home = () => {
       <div className="container-header">
         <Header />
       </div>
-      <div className="container-pizzas">
-        {pizzas.map((pizza) => (
-          <CardPizza
-            key={pizza.id}
-            id={pizza.id}
-            name={pizza.name}
-            price={pizza.price}
-            ingredients={pizza.ingredients}
-            img={pizza.img}
-          />
-        ))}
-      </div>
+      
+        {loading ? (
+          <div className="loader"></div>
+        ) : (
+          <div className="container-pizzas">
+          {pizzas.map((pizza) => (
+            <CardPizza
+              key={pizza.id}
+              id={pizza.id}
+              name={pizza.name}
+              price={pizza.price}
+              ingredients={pizza.ingredients}
+              img={pizza.img}
+            />
+          ))}
+          </div>
+        )}
+      
     </>
   );
 };
